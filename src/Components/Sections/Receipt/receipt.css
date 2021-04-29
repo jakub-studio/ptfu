@@ -1,0 +1,54 @@
+.receipt-container {
+	font-size: 0.875rem;
+    line-height: 1.25rem;
+/* 	flex-grow: 1;
+	display: flex;
+	flex-direction: column; */
+}
+
+.receipt-item {
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	display: flex;
+}
+
+.receipt-entries {
+	display: flex;
+	flex-direction: column; 
+	overflow-y: scroll;
+	height: 84vh;
+	padding-right: 5px;
+}
+
+.receipt-entries::-webkit-scrollbar {
+	width: 5px;
+}
+
+.receipt-entries::-webkit-scrollbar-track {
+	background: hsl(0, 0%, 90%);
+}
+
+.receipt-entries::-webkit-scrollbar-thumb {
+	background-color: hsl(0, 0%, 70%);
+}
+
+.receipt-entry-container {
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+
+.receipt-entry-container:not(:last-child) {
+	border-bottom: 1px solid hsl(0, 0%, 70%);
+}
+
+.receipt-delete-entry-button {
+	border: none;
+    margin-left: 5px;
+	background-color: hsl(0, 0%, 90%);
+	cursor: pointer;
+}
+
+.receipt-delete-entry-button:hover {
+	background-color: hsl(0, 0%, 80%);
+}

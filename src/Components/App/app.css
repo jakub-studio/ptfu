@@ -1,0 +1,25 @@
+.app {
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+}
+
+.app-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.app-logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.app-sections {
+	flex-grow: 1;
+	display: flex;
+	justify-content: space-between;
+}

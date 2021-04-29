@@ -1,0 +1,12 @@
+#section-manage .button-array {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#section-manage .button-array > input {
+	margin-bottom: 10px;
+}
+
+#section-manage .button-array > :not(:last-child) {
+	margin-right: 10px;
+}

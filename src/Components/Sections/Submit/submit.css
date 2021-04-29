@@ -1,0 +1,17 @@
+#section-submit .input-array {
+	display: flex;
+}
+
+#section-submit .input-array > :first-child {
+	margin-right: 10px;
+	width: 200%;
+}
+
+#section-submit .assignees-for {
+	display: flex;
+	align-items: center;
+}
+
+#section-submit .assignees-for > :first-child {
+	margin-right: 5px;
+}

@@ -1,0 +1,17 @@
+.modal {
+	background-color: white;
+	padding: 10px;
+	min-width: 250px;
+}
+
+.modal-buttons {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 10px;
+	border-top: 1px solid hsl(0, 0%, 80%);
+	padding-top: 10px;
+}
+
+.modal-buttons > :not(:last-child) {
+	margin-right: 5px;
+}

@@ -1,5 +1,13 @@
+:root {
+	--type-col-default: rgb(17,24,39);
+  --button-hover-trans: background-color 0.17s ease;
+}
+
 body {
-  margin: 0;
+  margin: 0px;
+  line-height: 1.5;
+  font-size: 20px;
+  color: var(--type-col-default);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +18,54 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+html, body, #root, .app {
+  width: 100%;
+  height: 100%;
+}
+
+h1, h2 {
+  margin: 0;
+  user-select: none;
+}
+
+
+h1 {
+	color: var(--type-col-default);
+	font-size: 32px;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.lineheight80 {
+  line-height: 80%;
+}
+
+.selectable {
+  user-select: initial;
+}
+
+.use-blue-focus:focus {
+	outline-color: #2186fa;
+	outline-style: solid;
+	outline-width: 2px;
+	outline-offset: -1px;
 }

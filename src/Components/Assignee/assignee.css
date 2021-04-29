@@ -1,0 +1,53 @@
+.assignee {
+	border-radius: 999px;
+	border: none;
+	padding: 3px 7px;
+	display: flex;
+	align-items: center;
+}
+
+.assignee.dashed {
+	background-color: transparent;
+	border: 1px dashed hsl(0, 0%, 30%);
+	transition: var(--button-hover-trans);
+}
+
+.assignee.clickable.dashed:hover {
+	background-color: hsl(0, 0%, 95%);
+}
+
+.assignee.clickable {
+	cursor: pointer;
+}
+
+
+.assignee .checkbox {
+	width: 10px;
+	height: 10px;
+	background-color: hsl(120, 100%, 60%);
+	border-radius: 100%;
+	margin-right: 5px;
+	border: 1px solid hsl(120, 100%, 40%);
+}
+
+
+.assignee-list {
+	display: flex;
+	align-items: center;
+}
+
+.assignee-list > :not(:last-child) {
+	margin-right: 5px;
+}
+
+.assignee-input-container {
+	display: flex;
+    align-items: center;
+}
+
+.assignee-input-container .submit-button {
+    background-color: hsl(0, 0%, 80%);
+    margin-left: 3px;
+    padding: 2px 5px;
+    border-radius: 5px;
+}

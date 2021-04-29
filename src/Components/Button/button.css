@@ -1,0 +1,25 @@
+.button {
+	background-color: transparent;
+	border-width: 1px;
+	padding: 10px;
+	cursor: pointer;
+	transition: var(--button-hover-trans);
+}
+
+.button.width-100 {
+	width: 100%;
+}
+
+.button:hover,
+.button:focus {
+	background-color: #dddcdc;
+} 
+
+.button.button-primary {
+	background-color: #54FF7C;
+}
+
+.button.button-primary:hover,
+.button.button-primary:focus {
+	background-color: #98ffb0;
+}

@@ -1,0 +1,17 @@
+.divider-horizontal {
+	height: 1px;
+	margin: 10px 0px;
+}
+
+.divider-vertical {
+	width: 1px;
+	margin: 0px 15px;
+}
+
+.divider-primary {
+	background-color: black;
+}
+
+.divider-secondary {
+	background-color: hsl(0, 0%, 85%);
+}
