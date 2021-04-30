@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 import "./input.css"
 
@@ -8,6 +9,8 @@ interface InputFieldProps {
 	number?: boolean;
 	autofocus?: boolean;
 	id?: string;
+	size?: number;
+	error?: string;
 }
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -16,9 +19,11 @@ const InputField: React.FC<InputFieldProps> = ({
 	placeholder,
 	number,
 	autofocus,
-	id
+	id,
+	size,
+	error
 }) => {
-	const changeHandler = React.useCallback<(event: { nativeEvent: InputEvent, target: HTMLInputElement}) => void>(event => {
+	const changeHandler = React.useCallback<(event: { nativeEvent: InputEvent, target: HTMLInputElement }) => void>(event => {
 		const { value: newValue } = event.target;
 		const key = event.nativeEvent.data;
 
@@ -26,7 +31,7 @@ const InputField: React.FC<InputFieldProps> = ({
 
 		const split = newValue.split(".");
 		const pointCount = split.length - 1;
-		
+
 		if (key === null) return onChange(newValue); // null is backspace
 		if (key === ".") {
 			if (pointCount >= 2) return;
@@ -38,15 +43,19 @@ const InputField: React.FC<InputFieldProps> = ({
 		onChange(newValue);
 	}, [onChange, number])
 
-	return <input
-		autoFocus={autofocus}
-		className="input-field use-blue-focus"
-		value={value}
-		onChange={changeHandler as any}
-		placeholder={placeholder}
-		id={id}
-		autoComplete="off"
-	/>
+	return <div className="input-field-container">
+		<input
+			autoFocus={autofocus}
+			className={classNames("input-field use-blue-focus", error && "error")}
+			value={value}
+			onChange={changeHandler as any}
+			placeholder={placeholder}
+			id={id}
+			autoComplete="off"
+			size={size}
+		/>
+		{typeof error === "string" && <div className="error-box"><span>error:</span>{error}</div>}
+	</div>
 }
 
 export default InputField

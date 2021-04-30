@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./assignee.css";
-import "./modals.css";
 
 interface AssigneeProps {
 	colour?: string;
@@ -27,11 +26,13 @@ interface AssigneeInputProps {
 }
 
 const AssigneeInput: React.FC<AssigneeInputProps> = ({onClickOut, placeholder, onSubmit}) => {
-	const ref = useRef<HTMLDivElement>(null);
+	const ref = useRef<HTMLInputElement>(null);
 	const [value, setValue] = useState("");
 	
 	const handleClickOut = (event: MouseEvent) => {
+		console.log(event)
 		if (ref.current && !ref.current.contains(event.target as Node)) {
+			console.log("click out event")
 			onClickOut();
 		}
 	}
@@ -42,6 +43,7 @@ const AssigneeInput: React.FC<AssigneeInputProps> = ({onClickOut, placeholder, o
 		return () => {
 			document.removeEventListener('click', handleClickOut);
 		};
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const onInputSubmit = useCallback(() => {
@@ -53,9 +55,12 @@ const AssigneeInput: React.FC<AssigneeInputProps> = ({onClickOut, placeholder, o
 	}, [value, onSubmit, onClickOut]);
 
 	const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-		const key = (event["nativeEvent"] as KeyboardEvent).key;
+		const key = (event["nativeEvent"] as InputEvent).data;
+
+		console.log(key)
 
 		if (key === "Enter") {
+			console.warn("enter key hit")
 			event.preventDefault();
 			return onInputSubmit();
 		}
@@ -63,14 +68,22 @@ const AssigneeInput: React.FC<AssigneeInputProps> = ({onClickOut, placeholder, o
 		setValue(event.target.value);
 	}, [setValue, onInputSubmit]);
 
-	return <div ref={ref} className="assignee-input-container">
+	return <div className="assignee-input-container" onClick={e => {
+		e.stopPropagation()
+		e.preventDefault()
+	}}>
 		<input
 			size={10}
 			autoFocus
 			value={value}
 			onChange={onChange}
+			onClick={e => {
+				e.stopPropagation()
+				e.preventDefault()
+			}}
 			placeholder={placeholder}
 			className="use-blue-focus"
+			ref={ref}
 		/>
 		<div onClick={onInputSubmit} className="submit-button">+</div>
 	</div>;
@@ -135,7 +148,7 @@ class Assignee extends React.Component<AssigneeProps, AssigneeState> {
 	}
 	renderCheckbox (): React.ReactNode {
 		return (
-			typeof this.props.checkbox === "boolean" && <div className="checkbox" />
+			typeof this.props.checkbox === "boolean" && <div className={classNames("checkbox", `checkbox-${this.props.checkbox}`)} />
 		)
 	}
 	renderChildren (): React.ReactNode {
@@ -147,11 +160,11 @@ class Assignee extends React.Component<AssigneeProps, AssigneeState> {
 			/> : this.props.children;
 	}
 	render() {
-		const { dashed, onClick } = this.props;
+		const { dashed } = this.props;
 		const clickable = this.isClickable()
 
 		return <button
-			className={classNames("assignee", dashed && "dashed", clickable && "clickable")}
+			className={classNames("assignee use-blue-focus", dashed && "dashed", clickable && "clickable")}
 			onClick={this.onOuterClick}
 			style={this.getStyle()}
 			tabIndex={clickable ? 0 : -1}

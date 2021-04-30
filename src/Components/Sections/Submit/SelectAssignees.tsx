@@ -1,7 +1,6 @@
 import React from "react";
 import useAssignees from "../../../Hooks/AssigneeHooks";
 import Assignee, { AssigneeList } from "../../Assignee";
-import AddIndividual from "../../Assignee/addIndividual";
 import Divider from "../../Divider";
 
 interface SelectAssigneesProps {
@@ -9,38 +8,59 @@ interface SelectAssigneesProps {
 	setAssignees: (newAssignees: string[]) => void;
 }
 
+const createAddAssigneeCallback = (
+	currentAssignees: string[],
+	setAssignees: (newAssignees: string[]) => void,
+	id: string
+) => {
+	return () => setAssignees(Array.from(new Set(
+		[...currentAssignees, id]
+	)))
+};
+
+const createRemoveAssigneeCallback = (
+	currentAssignees: string[],
+	setAssignees: (newAssignees: string[]) => void,
+	id: string
+) => {
+	return () => setAssignees(
+		currentAssignees.filter(aid => aid !== id)
+	)
+};
+
 const SelectAssignees: React.FC<SelectAssigneesProps> = props => {
-	const { assignees, addIndividual, getAssignee } = useAssignees();
+	const { assignees, addIndividual, getAssignee, } = useAssignees();
 	const isAllMembers = props.assignees.length === 0;
 
+	console.log(props.assignees)
+
 	return <div className="mb-8">
-		<div className="assignees-for">
-			<h2>Assigned to:</h2>
 			<AssigneeList>
+				<h2>Assigned to:</h2>
 				{isAllMembers && <Assignee>All Members</Assignee>}
 				{props.assignees.map(id => {
 					const a = getAssignee(id);
 					if (!a) return null;
-					<Assignee key={id} colour={a.colour}>{a.name}</Assignee>
+
+					return <Assignee key={id} colour={a.colour} onClick={createRemoveAssigneeCallback(props.assignees, props.setAssignees, a.id)}>{a.name}</Assignee>
 				})}
 			</AssigneeList>
-		</div>
 
 		<Divider horizontal secondary />
 
 		<AssigneeList>
-			{assignees.map(a => (
-				<Assignee key={a.id} checkbox={props.assignees.includes(a.id)} colour={a.colour} >{a.name}</Assignee>
-			))}
+			{assignees.map(a => {
+				const isActive = props.assignees.includes(a.id);
+				return <Assignee
+					key={a.id}
+					checkbox={isActive}
+					colour={a.colour}
+					onClick={isActive ? createRemoveAssigneeCallback(props.assignees, props.setAssignees, a.id) : createAddAssigneeCallback(props.assignees, props.setAssignees, a.id)}
+				>{a.name}</Assignee>
+			})}
+			<Assignee dashed input={{placeholder: "name", onInput: addIndividual}}>+</Assignee>
 		</AssigneeList>
-
-		<div className="mb-8" />
-
-		<AssigneeList>
-			<Assignee dashed input={{placeholder: "name", onInput: addIndividual}}>+ Add Indivdual</Assignee>
-			<Assignee dashed>+ Add Group</Assignee>
-		</AssigneeList>
-	</div>
+	</div>;
 }
 
 export default SelectAssignees

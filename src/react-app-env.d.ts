@@ -1,18 +1,18 @@
 /// <reference types="react-scripts" />
 
 declare namespace PTFU {
-	interface Assignee {
+	interface BaseAssignee {
 		type: string;
 		id: string;
 		colour: string;
 		name: string;
 	}
 
-	interface Indivdual extends Assignee {
+	interface Indivdual extends BaseAssignee {
 		type: "indivdual"
 	}
 	
-	export interface Group extends Assignee {
+	export interface Group extends BaseAssignee {
 		type: "group"
 		members: string[];
 	}
@@ -22,6 +22,6 @@ declare namespace PTFU {
 	export interface ReceiptEntry {
 		description: string;
 		price: number;
-		assignees: Array<EntryAssignable | null>;
+		assignees: string[];
 	}
 }

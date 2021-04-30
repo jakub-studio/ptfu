@@ -1,6 +1,30 @@
+.input-field-container {
+	position: relative;
+}
+
 .input-field {
 	padding: 10px;
 	border-width: 1px;
 	border-color: #707070;
 	width: 100%;
+}
+
+.input-field.error:focus {
+	outline-color: hsl(0, 96%, 55%);
+}
+
+.input-field-container .error-box {
+	position: absolute;
+    left: 0px;
+    background-color: rgb(255, 209, 209);
+    width: 100%;
+    padding: 10px;
+	font-size: 0.875rem;
+	outline: 1px solid hsl(0, 96%, 55%);
+}
+
+.input-field-container .error-box span {
+	color: hsl(0, 96%, 55%);
+    font-weight: 600;
+    margin-right: 5px;
 }

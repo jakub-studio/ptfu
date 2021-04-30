@@ -9,8 +9,6 @@ import ReceiptEntry from "./ReceiptEntry";
 const Receipt: React.FC = () => {
 	const { entries } = useReceipt();
 
-	console.log(entries)
-
 	return <Section title="receipt" id="section-receipt">
 		<div className="receipt-container">
 			<div className="receipt-entries">

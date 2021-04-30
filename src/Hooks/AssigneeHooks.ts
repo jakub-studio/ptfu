@@ -6,7 +6,7 @@ interface ReceiptHook extends State {
 	assignees: PTFU.EntryAssignable[];
 	addIndividual: (name: string) => PTFU.Indivdual;
 	addGroup: (name: string, members?: string[]) => PTFU.Group;
-	getAssignee: (id: string) => PTFU.Assignee | undefined;
+	getAssignee: (id: string) => PTFU.EntryAssignable | undefined;
 }
 
 let lastId = 0;
