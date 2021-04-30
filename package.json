@@ -2,6 +2,7 @@
   "name": "ptfu",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jakuski.github.io/ptfu/build",
   "dependencies": {
     "@types/classnames": "^2.2.11",
     "@types/react": "^17.0.4",
