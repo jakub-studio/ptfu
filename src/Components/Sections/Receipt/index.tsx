@@ -1,8 +1,6 @@
 import React from "react";
 import Section from "../";
 import "./receipt.css";
-import Divider from "../../Divider";
-import Currency from "../../Currency";
 import { useReceipt } from "../../../Hooks/ReceiptHooks";
 import ReceiptEntry from "./ReceiptEntry";
 

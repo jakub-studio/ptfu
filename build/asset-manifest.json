@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ptfu/build/static/css/main.653da77b.chunk.css",
-    "main.js": "/ptfu/build/static/js/main.cf778d47.chunk.js",
-    "main.js.map": "/ptfu/build/static/js/main.cf778d47.chunk.js.map",
+    "main.js": "/ptfu/build/static/js/main.9953e6f0.chunk.js",
+    "main.js.map": "/ptfu/build/static/js/main.9953e6f0.chunk.js.map",
     "runtime-main.js": "/ptfu/build/static/js/runtime-main.8ea59a0b.js",
     "runtime-main.js.map": "/ptfu/build/static/js/runtime-main.8ea59a0b.js.map",
     "static/js/2.d75961f0.chunk.js": "/ptfu/build/static/js/2.d75961f0.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.8ea59a0b.js",
     "static/js/2.d75961f0.chunk.js",
     "static/css/main.653da77b.chunk.css",
-    "static/js/main.cf778d47.chunk.js"
+    "static/js/main.9953e6f0.chunk.js"
   ]
 }

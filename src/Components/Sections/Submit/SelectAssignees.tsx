@@ -32,8 +32,6 @@ const SelectAssignees: React.FC<SelectAssigneesProps> = props => {
 	const { assignees, addIndividual, getAssignee, } = useAssignees();
 	const isAllMembers = props.assignees.length === 0;
 
-	console.log(props.assignees)
-
 	return <div className="mb-8">
 			<AssigneeList>
 				<h2>Assigned to:</h2>
