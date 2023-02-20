@@ -7,7 +7,7 @@
     "@types/classnames": "^2.3.1",
     "@types/react": "^18.0.27",
     "@types/react-aria-modal": "^4.0.6",
-    "@types/react-dom": "^18.0.10",
+    "@types/react-dom": "^18.0.11",
     "classnames": "^2.3.2",
     "immer": "^9.0.18",
     "react": "^18.2.0",
